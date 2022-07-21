@@ -1,17 +1,18 @@
-﻿@inherits LayoutComponentBase
+﻿@using BlazorApp.Components.AppBar
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+@inherits LayoutComponentBase
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
+<PageTitle>Flutter vs Blazor</PageTitle>
 
-        <article class="content px-4">
+<MudThemeProvider />
+<MudDialogProvider/>
+<MudSnackbarProvider />
+
+<MudLayout>
+    <AppBar />
+    <MudMainContent>
+        <MudContainer Class="mt-6">
             @Body
-        </article>
-    </main>
-</div>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
