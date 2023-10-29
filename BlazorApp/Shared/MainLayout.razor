@@ -6,12 +6,33 @@
     </div>
 
     <main>
-        <div class="top-row px-4">
+        <div class="top-row px-4" id="nav-bar">
             <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
         </div>
 
-        <article class="content px-4">
+        <article class="content px-4" style="@_contentHeight">
             @Body
         </article>
     </main>
 </div>
+
+@code {
+    [Inject]
+    private IJSRuntime _jsRuntime { get; set; }
+
+    private string _contentHeight { get; set; } = string.Empty;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            try
+            {
+                var contentHeight = await _jsRuntime.InvokeAsync<int>("getScreenHeight");
+                _contentHeight = $"height: {contentHeight}px";
+                StateHasChanged();
+            }
+            catch (Exception ex) { }
+        }
+    }
+}

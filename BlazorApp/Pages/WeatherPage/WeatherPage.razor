@@ -1,0 +1,32 @@
+﻿@using Components.TextLine
+@using MudBlazor
+
+@inherits WeatherPageBase
+
+@page "/weather"
+
+<PageTitle>Weather</PageTitle>
+
+<div id="container">
+    <BlazorApp.Components.TextLine.TextLine 
+        TextContent="Location Placeholder"
+        TextSize="24"
+        Padding="8"
+        Bold
+    />
+    <BlazorApp.Components.TextLine.TextLine 
+        TextContent="Temperature Placeholder"
+        TextSize="20"
+        Padding="8"
+        Bold
+    />
+    <BlazorApp.Components.TextLine.TextLine 
+        TextContent="Weather Placeholder"
+        TextSize="20"
+        Padding="8"
+        Bold
+    />
+    <div style="width: 36px">
+        <MudIcon Icon="@Icons.Material.Filled.WbSunny" />
+    </div>
+</div>
